@@ -13,7 +13,8 @@ dependencies:
   - brotli=1.1.0
   - brotli-bin=1.1.0
   - bzip2=1.0.8
-  - ca-certificates=2023.7.22
+  - ca-certificates=2023.08.22
+  - certifi=2023.7.22
   - click=8.1.7
   - comm=0.1.4
   - contourpy=1.1.1
@@ -24,6 +25,7 @@ dependencies:
   - executing=1.2.0
   - fonttools=4.43.1
   - freetype=2.12.1
+  - gmp=6.2.1
   - importlib-metadata=6.8.0
   - importlib_metadata=6.8.0
   - ipykernel=6.25.2
