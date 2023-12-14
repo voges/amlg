@@ -2,7 +2,7 @@
 
 
 import random
-from typing import Any, Callable, List
+from typing import Any, Callable, List, Tuple
 import numpy as np
 import numpy.typing as npt
 
@@ -107,7 +107,7 @@ def make_align(
 
     def align(
         seq_a: List[str], seq_b: List[str]
-    ) -> (List[str], List[str], List[str], List[str], npt.NDArray[Any]):
+    ) -> Tuple[List[str], List[str], List[str], List[str], npt.NDArray[Any]]:
         """
         Perform local or global pairwise sequence alignment.
 
