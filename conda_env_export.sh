@@ -9,5 +9,7 @@ else
 fi
 
 environment_file="${git_root}/environment.yml"
-conda env export --no-builds | grep --invert-match "prefix" > "${environment_file}"
+conda env export --no-builds > "${environment_file}"
+grep --invert-match "^prefix" "${environment_file}" > "${environment_file}.tmp"
+mv "${environment_file}.tmp" "${environment_file}"
 echo "Updated environment file: ${environment_file}"
