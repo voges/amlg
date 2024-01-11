@@ -7,6 +7,7 @@ dependencies:
   - appnope=0.1.3
   - asttokens=2.4.0
   - atk-1.0=2.38.0
+  - attrs=23.1.0
   - backcall=0.2.0
   - backports=1.0
   - backports.functools_lru_cache=1.6.5
@@ -17,7 +18,7 @@ dependencies:
   - brotli-bin=1.1.0
   - bzip2=1.0.8
   - c-ares=1.19.1
-  - ca-certificates=2023.11.17
+  - ca-certificates=2023.12.12
   - cairo=1.16.0
   - certifi=2023.11.17
   - click=8.1.7
@@ -61,6 +62,8 @@ dependencies:
   - jedi=0.19.1
   - jinja2=3.1.2
   - joblib=1.3.2
+  - jsonschema=4.19.2
+  - jsonschema-specifications=2023.7.1
   - jupyter_client=8.4.0
   - jupyter_core=5.4.0
   - kiwisolver=1.4.5
@@ -111,6 +114,7 @@ dependencies:
   - mpmath=1.3.0
   - munkres=1.1.4
   - mypy_extensions=1.0.0
+  - nbformat=5.9.2
   - ncurses=6.4
   - nest-asyncio=1.5.8
   - networkx=3.1
@@ -132,6 +136,7 @@ dependencies:
   - pip=23.3.1
   - pixman=0.40.0
   - platformdirs=3.11.0
+  - plotly=5.9.0
   - poppler=23.08.0
   - poppler-data=0.4.11
   - prompt-toolkit=3.0.39
@@ -144,6 +149,7 @@ dependencies:
   - pyparsing=3.0.9
   - python=3.11.6
   - python-dateutil=2.8.2
+  - python-fastjsonschema=2.16.2
   - python-graphviz=0.20.1
   - python-tzdata=2023.3
   - python_abi=3.11
@@ -152,6 +158,8 @@ dependencies:
   - pyyaml=6.0.1
   - pyzmq=25.1.1
   - readline=8.2
+  - referencing=0.30.2
+  - rpds-py=0.10.6
   - scikit-learn=1.2.2
   - scipy=1.11.3
   - setuptools=68.2.2
@@ -160,6 +168,7 @@ dependencies:
   - stack_data=0.6.2
   - sympy=1.11.1
   - tbb=2021.8.0
+  - tenacity=8.2.2
   - threadpoolctl=3.2.0
   - tk=8.6.13
   - tornado=6.3.3
