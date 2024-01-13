@@ -187,5 +187,14 @@ dependencies:
   - zlib=1.2.13
   - zstd=1.5.5
   - pip:
+      - asciitree==0.3.3
+      - cooler==0.9.3
+      - cytoolz==0.12.2
+      - dill==0.3.7
       - fsspec==2023.12.1
+      - h5py==3.10.0
+      - multiprocess==0.70.15
+      - pyfaidx==0.8.0
+      - simplejson==3.19.2
+      - toolz==0.12.0
       - torchviz==0.0.2
