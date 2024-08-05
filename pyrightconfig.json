@@ -1,5 +1,0 @@
-{
-    "ignore": [
-        "notebooks/**/*-assignment.ipynb",
-    ],
-}
