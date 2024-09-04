@@ -49,9 +49,7 @@ The individual notebooks already contain the code to download the necessary data
 
 We use [pip](https://pip.pypa.io) for package and environment management.
 
-We provide two `requirements.txt` files:
-- [`requirements_macos.txt`](requirements_macos.txt), used and tested on macOS Sonoma 14.6.1 with pip 24.2.
-- [`requirements_ubuntu.txt`](requirements_ubuntu.txt), used and tested on Ubuntu 22.04.4 LTS with pip 24.2.
+We provide a [`requirements.txt`](requirements.txt) file, used and tested on macOS Sonoma 14.6.1 with pip 24.2.
 
 Here are the most important commands:
 
