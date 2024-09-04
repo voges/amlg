@@ -1,6 +1,5 @@
 """Module containing functionality for pairwise sequence alignment."""
 
-
 import random
 from typing import Any, Callable, List, Tuple
 import numpy as np
@@ -96,7 +95,7 @@ def make_align(
 
         Returns
         -------
-        ptr_mat :  npt.NDArray[Any]
+        ptr_mat : npt.NDArray[Any]
             The initialized pointer matrix.
 
         """
