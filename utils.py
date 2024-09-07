@@ -1,6 +1,5 @@
 import os
 import requests
-import shutil
 from tqdm import tqdm
 
 
