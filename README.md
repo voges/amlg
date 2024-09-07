@@ -1,6 +1,6 @@
 # Applied Machine Learning in Genomic Data Science
 
-This repository contains [Jupyter](https://jupyter.org) notebooks for the course **Applied Machine Learning in Genomic Data Science** (AMLG).
+This repository contains the code for the course **Applied Machine Learning in Genomic Data Science** (AMLG).
 
 This course was held at:
 - Winter Semester 2023/24, [Leibniz University Hannover](https://www.uni-hannover.de)
@@ -31,7 +31,7 @@ git clone https://github.com/voges/amlg.git
 > Please refer to the [Ubuntu documentation](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview) for installation instructions.
 > On Mac systems, we recommend installing Git using the Xcode command line tools (via `xcode-select --install`) or via [Homebrew](https://brew.sh).
 
-To work with Jupyter notebooks locally, we recommend [Visual Studio Code with its Jupyter extensions](https://code.visualstudio.com/docs/datascience/jupyter-notebooks).
+We recommend [Visual Studio Code with its Jupyter extensions](https://code.visualstudio.com/docs/datascience/jupyter-notebooks).
 
 ### Online
 
