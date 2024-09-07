@@ -8,7 +8,7 @@ This course was held at:
 
 Happy coding! 👩‍💻👨‍💻
 
-## Jupyter Notebooks
+## How to Work With This Repository
 
 In this course, all exercises are provided as [Jupyter](https://jupyter.org) notebooks.
 
@@ -16,7 +16,11 @@ In this course, all exercises are provided as [Jupyter](https://jupyter.org) not
 > The main part of a Jupyter notebook is a list of cells.
 > List of cells are different types of cells for [Markdown](https://en.wikipedia.org/wiki/Markdown), code, and output of the code type cells.
 
-## How to Work With This Repository
+The notebooks are organized in [**demos**](notebooks/demos/) and [**exercises**](notebooks/exercises/).
+In each exercise folder, you will find two versions of each notebook: one named, e.g., `hic-analysis-assignment.ipynb`, and another one named `hic-analysis-solution.ipynb`.
+Please work in the assignment version.
+If you get stuck, feel free to take a look at the corresponding solution.
+Note: Assignments will be uploaded according to the current status of the course.
 
 ### Locally
 
@@ -35,9 +39,10 @@ We recommend [Visual Studio Code with its Jupyter extensions](https://code.visua
 
 ### Online
 
-On the [GWDG Jupyter Cloud](https://jupyter-cloud.gwdg.de), in addition to the terminal,  you can use the graphical user interface to clone the repository.
+We recommend using the [GWDG Jupyter Cloud](https://jupyter-cloud.gwdg.de).
+Here, in addition to the terminal, you can use the graphical user interface to clone the repository.
 
-Alternatively, you can copy and run any Jupyter notebook on any other online Jupyter server, such as [Google Colab](https://colab.research.google.com).
+Alternatively, you can use any other online Jupyter server, such as [Google Colab](https://colab.research.google.com).
 
 ## Data Availability
 
