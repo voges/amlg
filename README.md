@@ -47,6 +47,7 @@ Alternatively, you can use any other online Jupyter server, such as [Google Cola
 ## Data Availability
 
 The data used are available via the [Harvard Dataverse](https://dataverse.harvard.edu) under the DOI [10.7910/DVN/ZSVS5X](https://doi.org/10.7910/DVN/ZSVS5X).
+A copy of the data is also hosted [here](https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/) via Seafile at Leibniz University Hannover.
 Note: It is not necessary to download the data beforehand.
 The individual notebooks already contain the code to download the necessary data.
 
