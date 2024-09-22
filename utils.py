@@ -1,6 +1,7 @@
 import os
 import requests
 from tqdm import tqdm
+from zipfile import ZipFile
 
 
 def download_file(url: str, save_filename: str) -> None:
@@ -45,3 +46,20 @@ def download_file(url: str, save_filename: str) -> None:
                 progress_bar.close()
     else:
         print(f"File already exists: {save_filename}")
+
+
+def extract_zip(zip_path: str, extract_dir: str) -> None:
+    """
+    Extract a ZIP file.
+
+    Args:
+        zip_path: The path to the ZIP file.
+        extract_dir: The directory to extract the ZIP file into.
+    """
+    if not os.path.exists(path=extract_dir):
+        print(f"Extracting ZIP file: {zip_path}")
+        with ZipFile(file=zip_path) as zipfile:
+            zipfile.extractall(path=extract_dir)
+            print(f"Extraction completed: {extract_dir}")
+    else:
+        print(f"Found extracted files: {extract_dir}")
