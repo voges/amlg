@@ -1,5 +1,5 @@
 {
     "python.analysis.ignore": [
-        "**/*-assignment.ipynb*"
+        "**/*_assignment.ipynb*"
     ]
 }
