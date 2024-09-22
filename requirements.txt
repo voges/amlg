@@ -69,6 +69,7 @@ pytz==2024.1
 PyYAML==6.0.2
 pyzmq==26.2.0
 requests==2.32.3
+ruff==0.6.7
 scanpy==1.10.3
 scikit-learn==1.5.1
 scipy==1.14.1

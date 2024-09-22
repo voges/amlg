@@ -3,24 +3,24 @@
 import os
 import sys
 
+from anndata import AnnData
 import pandas as pd
 import scanpy as sc
+from typing import Optional
 
 # Append the root of the git repository to the path
 git_root = os.popen(cmd="git rev-parse --show-toplevel").read().strip()
 sys.path.append(git_root)
 
-from utils import download_file, extract_zip
+from utils import download_file, extract_zip  # noqa: E402
 
 
 class PertData:
     """
     Class for perturbation data.
 
-    The perturbation data is stored in an `AnnData` object.
-
-    Refer to https://anndata.readthedocs.io/en/latest/ for more information on
-    `AnnData`.
+    The perturbation data is stored in an `AnnData` object. Refer to
+    https://anndata.readthedocs.io/en/latest/ for more information on `AnnData`.
 
     `AnnData` is specifically designed for matrix-like data. By this we mean that we
     have n observations, each of which can be represented as d-dimensional vectors,
@@ -38,9 +38,9 @@ class PertData:
 
     def __init__(self) -> None:
         """Initialize the PertData object."""
-        self.name = None
-        self.path = None
-        self.adata = None
+        self.name: Optional[str] = None
+        self.path: Optional[str] = None
+        self.adata: Optional[AnnData] = None
 
     def __str__(self) -> str:
         """Return a string representation of the PertData object."""
@@ -60,7 +60,6 @@ class PertData:
             name: The name of the dataset to load (supported: "dixit", "adamson",
                 "norman").
             save_dir: The directory to save the data.
-            fix_labels: Whether to compute and add fixed perturbation labels.
         """
         instance = cls()
         instance.name = name
@@ -72,9 +71,9 @@ class PertData:
         return instance
 
 
-def _load(name: str, save_dir: str) -> sc.AnnData:
+def _load(name: str, save_dir: str) -> AnnData:
     """
-    Load perturbation dataset.
+    Load perturbation dataset from Gene Expression Omnibus (GEO).
 
     The following are the [Gene Expression Omnibus](https://www.ncbi.nlm.nih.gov/geo/)
     accession numbers used:
@@ -124,11 +123,13 @@ def _load(name: str, save_dir: str) -> sc.AnnData:
 
     # Extract the dataset
     print(f"Extracting dataset: {name}")
-    extract_zip(zip_path=zip_filename, extract_dir=os.path.join(save_dir, name))
+    extract_dir = os.path.join(save_dir, name)
+    extract_zip(zip_path=zip_filename, extract_dir=extract_dir)
 
     # Load the dataset
     print(f"Loading dataset: {name}")
-    adata = sc.read_h5ad(filename=os.path.join(save_dir, name, filename))
+    dataset_filename = os.path.join(extract_dir, filename)
+    adata = sc.read_h5ad(filename=dataset_filename)
 
     return adata
 
