@@ -17,27 +17,19 @@ def make_align(
     `align()` function as well as some helper functions. This is implementing
     the concept of a closure.
 
-    Parameters
-    ----------
-    mode : str
-        Human-readable string, can be either "global" or "local". Specifies
-        whether to perform global alignment (end-to-end) using the
-        Needleman-Wunsch algorithm, or local alignment using the
-        Smith-Waterman algorithm.
-    match : int
-        The score for a match.
-    mismatch : int
-        The score/penalty for a mismatch.
-    gap : int
-        The score/penalty for a gap.
+    The `mode` specifies whether to perform global alignment (end-to-end) using the
+    Needleman-Wunsch algorithm, or local alignment using the Smith-Waterman algorithm.
 
-    Returns
-    -------
-    align : typing.Callable
-        The align function.
+    Args:
+        mode: The alignment mode. Either "global" or "local".
+        match: The score for a match.
+        mismatch: The score/penalty for a mismatch.
+        gap: The score/penalty for a gap.
 
+    Returns:
+        align: The align function.
     """
-    # Check whether the mode is valid
+    # Check if the mode is valid
     valid_modes = ["global", "local"]
     if mode not in valid_modes:
         raise RuntimeError(f"Invalid mode: {mode}")
@@ -54,18 +46,12 @@ def make_align(
            right (bottom).
         2. Local alignment: The first row and column are set to zero.
 
-        Parameters
-        ----------
-        a_len : int
-            Length of the first sequence.
-        b_len : int
-            Length of the second sequence.
+        Args:
+            a_len: The length of the first sequence.
+            b_len: The length of the second sequence.
 
-        Returns
-        -------
-        scoring_mat : npt.NDArray[Any]
-            The initialized scoring matrix.
-
+        Returns:
+            scoring_mat: The initialized scoring matrix.
         """
         scoring_mat = np.zeros(shape=((a_len + 1), (b_len + 1)))
         a_stop = a_len * gap
@@ -86,18 +72,12 @@ def make_align(
         must be recorded. Therefore we store pointers to trace through an
         optimal alignment. We use 0 for top-left, 1 for left, and 2 for top.
 
-        Parameters
-        ----------
-        a_len : int
-            Length of the first sequence.
-        b_len : int
-            Length of the second sequence.
+        Args:
+            a_len: The length of the first sequence.
+            b_len: The length of the second sequence.
 
-        Returns
-        -------
-        ptr_mat : npt.NDArray[Any]
-            The initialized pointer matrix.
-
+        Returns:
+            ptr_mat: The initialized pointer matrix.
         """
         ptr_mat = np.zeros(shape=((a_len + 1), (b_len + 1)))
         ptr_mat[:, 0] = 2
@@ -115,26 +95,16 @@ def make_align(
         the optimal local alignment between two sequences. It is a variation
         of the Needleman-Wunsch algorithm.
 
-        Parameters
-        ----------
-        seq_a : List[str]
-            The first sequence.
-        seq_b : List[str]
-            The second sequence.
+        Args:
+            seq_a: The first sequence.
+            seq_b: The second sequence.
 
-        Returns
-        -------
-        seq_a_aln : List[str]
-            The aligned first sequence. Gaps are filled with "-".
-        seq_b_aln : List[str]
-            The aligned second sequence. Gaps are filled with "-".
-        warp_path_a : List[str]
-            The warping path coordinated for the first sequence.
-        warp_path_b : List[str]
-            The warping path coordinated for the second sequence.
-        scoring_mat : npt.NDArray[str]
-            The scoring matrix.
-
+        Returns:
+            seq_a_aln: The aligned first sequence. Gaps are filled with "-".
+            seq_b_aln: The aligned second sequence. Gaps are filled with "-".
+            warp_path_a: The warping path of the first sequence.
+            warp_path_b: The warping path of the second sequence.
+            scoring_mat: The scoring matrix.
         """
         # Initialize the scoring and pointer matrices
         scoring_mat = _init_scoring_mat(a_len=len(seq_a), b_len=len(seq_b))
