@@ -17,10 +17,10 @@ In this course, all exercises are provided as [Jupyter](https://jupyter.org) not
 > List of cells are different types of cells for [Markdown](https://en.wikipedia.org/wiki/Markdown), code, and output of the code type cells.
 
 The notebooks are organized in [**demos**](notebooks/demos/) and [**exercises**](notebooks/exercises/).
-In each exercise folder, you will find two versions of each notebook: one named, e.g., `hic_analysis_assignment.ipynb`, and another one named `hic_analysis_solution.ipynb`.
+In each exercise folder, you will find two versions of each notebook: one named, e.g., `hic_analysis.ipynb`, and another one named `hic_analysis_assignment.ipynb`.
 Please work in the assignment version.
 If you get stuck, feel free to take a look at the corresponding solution.
-Note: Assignments will be uploaded according to the current status of the course.
+Note: The assignment versions will be uploaded according to the current status of the course.
 
 ### Locally
 
