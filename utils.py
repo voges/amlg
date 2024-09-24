@@ -37,6 +37,7 @@ def download_file(url: str, save_filename: str) -> None:
                         progress_bar.update(n=len(data))
                         file.write(data)
                 progress_bar.close()
+            print(f"Download completed: {save_filename}")
         except requests.exceptions.RequestException as e:
             print(f"Error downloading file: {e}")
         except OSError as e:
@@ -57,9 +58,9 @@ def extract_zip(zip_path: str, extract_dir: str) -> None:
         extract_dir: The directory to extract the ZIP file into.
     """
     if not os.path.exists(path=extract_dir):
-        print(f"Extracting ZIP file: {zip_path}")
+        print(f"Extracting ZIP file: {zip_path} -> {extract_dir}")
         with ZipFile(file=zip_path) as zipfile:
             zipfile.extractall(path=extract_dir)
-            print(f"Extraction completed: {extract_dir}")
+        print(f"Extraction completed: {extract_dir}")
     else:
         print(f"Found extracted files: {extract_dir}")
