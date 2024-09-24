@@ -89,6 +89,15 @@ Here are the most important commands:
     deactivate
     ```
 
+## Code Linting
+
+We use [Ruff](https://github.com/astral-sh/ruff) for code linting.
+Just execute the following command from the Git root:
+
+```sh
+ruff check .
+```
+
 ## License
 
 This project is licensed under the MIT License.
