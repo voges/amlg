@@ -12,7 +12,7 @@ from typing import Optional
 git_root = os.popen(cmd="git rev-parse --show-toplevel").read().strip()
 sys.path.append(git_root)
 
-from utils import download_file, extract_zip  # noqa: E402
+from utils import download_file  # noqa: E402
 
 
 class PertData:
@@ -86,6 +86,22 @@ def _load(dataset_name: str, dataset_dir: str) -> AnnData:
     - Adamson et al., 2016: https://doi.org/10.1016/j.cell.2016.11.048
     - Norman et al., 2019: https://doi.org/10.1126/science.aax4438
 
+    The following URLs are from the
+    [GEARS code](https://github.com/snap-stanford/GEARS/blob/master/gears/pertdata.py):
+    - Dixit et al., 2016: https://dataverse.harvard.edu/api/access/datafile/6154416
+    - Adamson et al., 2016: https://dataverse.harvard.edu/api/access/datafile/6154417
+    - Norman et al., 2019: https://dataverse.harvard.edu/api/access/datafile/6154020
+
+    The following URLs are from the ["Applied Machine Learning in Genomic Data Science" dataset on the Harvard Dataverse](https://doi.org/10.7910/DVN/ZSVS5X):
+    - Dixit et al., 2016: https://dataverse.harvard.edu/api/access/datafile/10548302
+    - Adamson et al., 2016: https://dataverse.harvard.edu/api/access/datafile/10548300
+    - Norman et al., 2019: https://dataverse.harvard.edu/api/access/datafile/10548304
+
+    The following URLs are from the ["Applied Machine Learning in Genomic Data Science" dataset on the LUH Seafile server](https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/):
+    - Dixit et al., 2016: https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/files/?p=%2Fperturbation_data_analysis%2Fdixit%2Fperturb_processed.h5ad&dl=1
+    - Adamson et al., 2016: https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/files/?p=%2Fperturbation_data_analysis%2Fadamson%2Fperturb_processed.h5ad&dl=1
+    - Norman et al., 2019: https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/files/?p=%2Fperturbation_data_analysis%2Fnorman%2Fperturb_processed.h5ad&dl=1
+
     Args:
         dataset_name: The name of the dataset to load (supported: "dixit", "adamson",
             "norman").
@@ -98,55 +114,17 @@ def _load(dataset_name: str, dataset_dir: str) -> AnnData:
         ValueError: If the dataset name is unknown.
     """
     dataset_filename = os.path.join(dataset_dir, "perturb_processed.h5ad")
+
     if dataset_name == "dixit":
-        # URL used in:
-        # https://github.com/snap-stanford/GEARS/blob/master/gears/pertdata.py
-        # url = "https://dataverse.harvard.edu/api/access/datafile/6154416"
-        # download_filename = os.path.join(dataset_dir, dataset_name, ".zip")
-
-        # "Applied Machine Learning in Genomic Data Science" dataset on the Harvard
-        # Dataverse (https://doi.org/10.7910/DVN/ZSVS5X)
-        # url = "https://dataverse.harvard.edu/api/access/datafile/10548302"
-        # download_filename = os.path.join(dataset_dir, dataset_name, ".zip")
-
-        # "Applied Machine Learning in Genomic Data Science" dataset on the LUH
-        # Seafile server (https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/)
         url = "https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/files/?p=%2Fperturbation_data_analysis%2Fdixit%2Fperturb_processed.h5ad&dl=1"
-        download_filename = dataset_filename
     elif dataset_name == "adamson":
-        # URL used in:
-        # https://github.com/snap-stanford/GEARS/blob/master/gears/pertdata.py
-        # url = "https://dataverse.harvard.edu/api/access/datafile/6154417"
-        # download_filename = os.path.join(dataset_dir, dataset_name, ".zip")
-
-        # "Applied Machine Learning in Genomic Data Science" dataset on the Harvard
-        # Dataverse (https://doi.org/10.7910/DVN/ZSVS5X)
-        # url = "https://dataverse.harvard.edu/api/access/datafile/10548300"
-        # download_filename = os.path.join(dataset_dir, dataset_name, ".zip")
-
-        # "Applied Machine Learning in Genomic Data Science" dataset on the LUH
-        # Seafile server (https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/)
         url = "https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/files/?p=%2Fperturbation_data_analysis%2Fadamson%2Fperturb_processed.h5ad&dl=1"
-        download_filename = dataset_filename
     elif dataset_name == "norman":
-        # URL used in:
-        # https://github.com/snap-stanford/GEARS/blob/master/gears/pertdata.py
-        # url = "https://dataverse.harvard.edu/api/access/datafile/6154020"
-        # download_filename = os.path.join(dataset_dir, dataset_name, ".zip")
-
-        # "Applied Machine Learning in Genomic Data Science" dataset on the Harvard
-        # Dataverse (https://doi.org/10.7910/DVN/ZSVS5X)
-        # url = "https://dataverse.harvard.edu/api/access/datafile/10548304"
-        # download_filename = os.path.join(dataset_dir, dataset_name, ".zip")
-
-        # "Applied Machine Learning in Genomic Data Science" dataset on the LUH
-        # Seafile server (https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/)
         url = "https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/files/?p=%2Fperturbation_data_analysis%2Fnorman%2Fperturb_processed.h5ad&dl=1"
-        download_filename = dataset_filename
     else:
         raise ValueError(f"Unknown dataset: {dataset_name}")
 
-    # If the dataset is not already downloaded, download it, extract it, and load it
+    # If the dataset directory does not exist, create it and download the dataset
     if not os.path.exists(path=dataset_dir):
         # Create dataset directory
         print(f"Creating dataset directory: {dataset_dir}")
@@ -154,39 +132,7 @@ def _load(dataset_name: str, dataset_dir: str) -> AnnData:
 
         # Download the dataset
         print(f"Downloading dataset: {dataset_name}")
-        download_file(url=url, save_filename=download_filename)
-
-        # Extract the dataset
-        if download_filename.endswith(".zip"):
-            print(f"Extracting dataset: {dataset_name}")
-
-            # Extract ZIP file to a temporary directory
-            extract_dir = os.path.join(dataset_dir, "tmp")
-            extract_zip(zip_path=download_filename, extract_dir=extract_dir)
-
-            # Remove ZIP file
-            os.remove(path=download_filename)
-
-            # Move all contents of extract_dir to dataset_dir
-            for file in os.listdir(path=extract_dir):
-                os.rename(
-                    src=os.path.join(extract_dir, file),
-                    dst=os.path.join(dataset_dir, file),
-                )
-
-            # Remove the temporary directory
-            os.rmdir(path=extract_dir)
-
-            # Clean up - move the dataset files one level up
-            dataset_subdir = os.path.join(dataset_dir, dataset_name)
-            for file in os.listdir(path=dataset_subdir):
-                os.rename(
-                    src=os.path.join(dataset_subdir, file),
-                    dst=os.path.join(dataset_dir, file),
-                )
-
-            # Remove the (now empty) dataset subdirectory
-            os.rmdir(path=dataset_subdir)
+        download_file(url=url, save_filename=dataset_filename)
     else:
         print(f"Dataset directory already exists: {dataset_dir}")
 
