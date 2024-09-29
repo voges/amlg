@@ -16,7 +16,7 @@ In this course, all exercises are provided as [Jupyter](https://jupyter.org) not
 > The main part of a Jupyter notebook is a list of cells.
 > List of cells are different types of cells for [Markdown](https://en.wikipedia.org/wiki/Markdown), code, and output of the code type cells.
 
-The notebooks are organized in [**demos**](notebooks/demos/) and [**exercises**](notebooks/exercises/).
+The notebooks are organized in [demos](notebooks/demos/) and [exercises](notebooks/exercises/).
 In each exercise folder, you will find two versions of each notebook: one named, e.g., `hic_analysis.ipynb`, and another one named `hic_analysis_assignment.ipynb`.
 Please work in the assignment version.
 If you get stuck, feel free to take a look at the corresponding solution.
@@ -55,9 +55,14 @@ The individual notebooks already contain the code to download the necessary data
 
 We use [pip](https://pip.pypa.io) for package and environment management.
 
-We provide a [`requirements.txt`](requirements.txt) file, used and tested on macOS Sonoma 14.6.1 with pip 24.2.
+Follow the steps below to set up your environment using the provided [`requirements.txt`](requirements.txt) file.
 
-Here are the most important commands:
+The environment has been used and tested on the following systems:
+
+- macOS Sonoma 14.6.1 with Python 3.12.6 and pip 24.2
+- Ubuntu 22.04.5 LTS with Python 3.10.12 and pip 22.0.2
+
+### Setup Instructions
 
 1. Create a virtual environment:
     ```sh
@@ -74,29 +79,36 @@ Here are the most important commands:
     pip3 install -r requirements.txt
     ```
 
-4. Install additional packages:
+### Additional Commands
+
+- Install additional packages:
     ```sh
     pip3 install <package>
     ```
 
-5. Update the requirements:
+- Update the requirements file:
     ```sh
     pip3 freeze > requirements.txt
     ```
 
-6. Deactivate the virtual environment:
+-  Deactivate the virtual environment:
     ```sh
     deactivate
     ```
 
 ## Code Linting
 
-We use [Ruff](https://github.com/astral-sh/ruff) for code linting.
-Just execute the following command from the Git root:
+We use [Ruff](https://github.com/astral-sh/ruff) to check the code for linting issues.
 
-```sh
-ruff check .
-```
+1. Install Ruff:
+    ```sh
+    pip3 install ruff
+    ```
+
+2. Run the following command from the root of the Git repository:
+    ```sh
+    ruff check .
+    ```
 
 ## License
 
