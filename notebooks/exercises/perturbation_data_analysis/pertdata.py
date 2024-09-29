@@ -8,7 +8,7 @@ import pandas as pd
 import scanpy as sc
 from typing import Optional
 
-# Append the root of the git repository to the path
+# Append the root of the Git repository to the path
 git_root = os.popen(cmd="git rev-parse --show-toplevel").read().strip()
 sys.path.append(git_root)
 
