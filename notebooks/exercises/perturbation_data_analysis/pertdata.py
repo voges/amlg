@@ -75,29 +75,32 @@ def _load(dataset_name: str, dataset_dir: str) -> AnnData:
     """
     Load perturbation dataset.
 
-    The following are the [Gene Expression Omnibus](https://www.ncbi.nlm.nih.gov/geo/)
-    accession numbers used:
-    - Dixit et al., 2016: [GSE90063](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE90063)
-    - Adamson et al., 2016: [GSE90546](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE90546)
-    - Norman et al., 2019: [GSE133344](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE133344)
+    The following are the corresponding publications:
+    - [Dixit et al., 2016](https://doi.org/10.1016/j.cell.2016.11.038)
+    - [Adamson et al., 2016](https://doi.org/10.1016/j.cell.2016.11.048)
+    - [Norman et al., 2019](https://doi.org/10.1126/science.aax4438)
 
-    The following are the DOIs of the corresponding publications:
-    - Dixit et al., 2016: https://doi.org/10.1016/j.cell.2016.11.038
-    - Adamson et al., 2016: https://doi.org/10.1016/j.cell.2016.11.048
-    - Norman et al., 2019: https://doi.org/10.1126/science.aax4438
+    The datasets used here are those used in [GEARS](https://doi.org/10.1038/s41587-023-01905-6).
+    These datasets all underwent the same preprocessing. First, each cell was normalized
+    by total counts over all genes and then a log transformation was applied. To reduce
+    the complexity, each dataset was restricted to only the 5000 most highly varying
+    genes. Additionally, any perturbed gene is included that was not already accounted
+    for in the set of most highly varying genes.
 
-    The following URLs are from the
+    The preprocessed datasets are available at the following URLs from the
     [GEARS code](https://github.com/snap-stanford/GEARS/blob/master/gears/pertdata.py):
     - Dixit et al., 2016: https://dataverse.harvard.edu/api/access/datafile/6154416
     - Adamson et al., 2016: https://dataverse.harvard.edu/api/access/datafile/6154417
     - Norman et al., 2019: https://dataverse.harvard.edu/api/access/datafile/6154020
 
-    The following URLs are from the ["Applied Machine Learning in Genomic Data Science" dataset on the Harvard Dataverse](https://doi.org/10.7910/DVN/ZSVS5X):
+    Copies of the preprocessed datasets are available at the following URLs from the
+    ["Applied Machine Learning in Genomic Data Science" dataset on the Harvard Dataverse](https://doi.org/10.7910/DVN/ZSVS5X):
     - Dixit et al., 2016: https://dataverse.harvard.edu/api/access/datafile/10548302
     - Adamson et al., 2016: https://dataverse.harvard.edu/api/access/datafile/10548300
     - Norman et al., 2019: https://dataverse.harvard.edu/api/access/datafile/10548304
 
-    The following URLs are from the ["Applied Machine Learning in Genomic Data Science" dataset on the LUH Seafile server](https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/):
+    Copies of the preprocessed datasets are available at the following URLs from the
+    ["Applied Machine Learning in Genomic Data Science" dataset on the LUH Seafile server](https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/):
     - Dixit et al., 2016: https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/files/?p=%2Fperturbation_data_analysis%2Fdixit%2Fperturb_processed.h5ad&dl=1
     - Adamson et al., 2016: https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/files/?p=%2Fperturbation_data_analysis%2Fadamson%2Fperturb_processed.h5ad&dl=1
     - Norman et al., 2019: https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/files/?p=%2Fperturbation_data_analysis%2Fnorman%2Fperturb_processed.h5ad&dl=1
