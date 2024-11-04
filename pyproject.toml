@@ -1,0 +1,5 @@
+[tool.ruff]
+exclude = ["*_exercise.ipynb"]
+
+[tool.pyright]
+ignore = ["**/*_exercise.ipynb*"]
