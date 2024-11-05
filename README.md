@@ -55,60 +55,32 @@ The individual notebooks already contain the code to download the necessary data
 
 We use [pip](https://pip.pypa.io) for package and environment management.
 
-Follow the steps below to set up your environment using the provided [`requirements.txt`](requirements.txt) file.
+Here are some useful commands:
 
-The environment has been used and tested on the following systems:
+```sh
+# Create a virtual environment.
+python3 -m venv .venv
 
-- macOS Sonoma 14.6.1 with Python 3.12.6 and pip 24.2
-- Ubuntu 22.04.5 LTS with Python 3.10.12 and pip 22.0.2
+# Activate a virtual environment.
+source .venv/bin/activate
 
-### Setup Instructions
+# Install packages from a requirements.txt file.
+pip3 install -r requirements.txt
 
-1. Create a virtual environment:
-    ```sh
-    python3 -m venv .venv
-    ```
+# Install a package.
+pip3 install <package>
 
-2. Activate the virtual environment:
-    ```sh
-    source .venv/bin/activate
-    ```
+# Update a requirements file.
+pip3 freeze > requirements.txt
 
-3. Install the required packages:
-    ```sh
-    pip3 install -r requirements.txt
-    ```
+# Deactivate a virtual environment.
+deactivate
+```
 
-### Additional Commands
+## Linting & Formatting
 
-- Install additional packages:
-    ```sh
-    pip3 install <package>
-    ```
-
-- Update the requirements file:
-    ```sh
-    pip3 freeze > requirements.txt
-    ```
-
--  Deactivate the virtual environment:
-    ```sh
-    deactivate
-    ```
-
-## Code Linting
-
-We use [Ruff](https://github.com/astral-sh/ruff) to check the code for linting issues.
-
-1. Install Ruff:
-    ```sh
-    pip3 install ruff
-    ```
-
-2. Run the following command from the root of the Git repository:
-    ```sh
-    ruff check .
-    ```
+We use [Ruff](https://github.com/astral-sh/ruff) to lint and format the code.
+We recommend using the [Ruff extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff).
 
 ## License
 
