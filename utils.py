@@ -1,12 +1,14 @@
+"""Functionality used across the project."""
+
 import os
+from zipfile import ZipFile
+
 import requests
 from tqdm import tqdm
-from zipfile import ZipFile
 
 
 def download_file(url: str, save_filename: str) -> None:
-    """
-    Download a file with a progress bar.
+    """Download a file with a progress bar.
 
     The progress bar will display the size in binary units (e.g., KiB for kibibytes,
     MiB for mebibytes, GiB for gibibytes, etc.), which are based on powers of 1024.
@@ -16,7 +18,8 @@ def download_file(url: str, save_filename: str) -> None:
         save_filename: The path to save the data.
 
     Raises:
-        requests.exceptions.RequestException: If there is an issue with the HTTP request.
+        requests.exceptions.RequestException: If there is an issue with the HTTP
+            request.
         OSError: If there is an issue with writing the file.
     """
     if not os.path.exists(path=save_filename):
@@ -24,9 +27,7 @@ def download_file(url: str, save_filename: str) -> None:
         try:
             with requests.get(url=url, stream=True) as response:
                 response.raise_for_status()
-                total_size_in_bytes = int(
-                    response.headers.get(key="content-length", default=0)
-                )
+                total_size_in_bytes = int(response.headers.get("content-length", 0))
                 print(f"Total size: {total_size_in_bytes:,} bytes")
                 block_size = 1024
                 progress_bar = tqdm(
@@ -42,16 +43,12 @@ def download_file(url: str, save_filename: str) -> None:
             print(f"Error downloading file: {e}")
         except OSError as e:
             print(f"Error writing file: {e}")
-        finally:
-            if "progress_bar" in locals():
-                progress_bar.close()
     else:
         print(f"File already exists: {save_filename}")
 
 
 def extract_zip(zip_path: str, extract_dir: str) -> None:
-    """
-    Extract a ZIP file.
+    """Extract a ZIP file.
 
     Args:
         zip_path: The path to the ZIP file.
