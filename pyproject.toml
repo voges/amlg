@@ -1,5 +1,22 @@
+[tool.pyright]
+ignore = ["**/*_exercise.ipynb*"]
+
 [tool.ruff]
 exclude = ["*_exercise.ipynb"]
 
-[tool.pyright]
-ignore = ["**/*_exercise.ipynb*"]
+[tool.ruff.lint]
+extend-select = [
+    # pycodestyle
+    "E", "W",
+    # isort
+    "I",
+    # pep8-naming
+    "N",
+    # pydocstyle
+    "D", "D401"
+]
+
+[tool.ruff.lint.pydocstyle]
+# The Google convention includes all D errors apart from: D203, D204, D213, D215,
+# D400, D401, D404, D406, D407, D408, D409, and D413.
+convention = "google"
