@@ -29,7 +29,7 @@ def make_align(
     Returns:
         align: The align function.
     """
-    # Check if the mode is valid
+    # Check if the mode is valid.
     valid_modes = ["global", "local"]
     if mode not in valid_modes:
         raise RuntimeError(f"Invalid mode: {mode}")
@@ -103,7 +103,7 @@ def make_align(
             warp_path_b: The warping path of the second sequence.
             scoring_mat: The scoring matrix.
         """
-        # Initialize the scoring and pointer matrices
+        # Initialize the scoring and pointer matrices.
         scoring_mat = _init_scoring_mat(a_len=len(seq_a), b_len=len(seq_b))
         ptr_mat = _init_ptr_mat(a_len=len(seq_a), b_len=len(seq_b))
 
@@ -126,7 +126,7 @@ def make_align(
                 else:
                     ptr_mat[(i + 1), (j + 1)] = np.argmax(trace)
 
-        # Set the traceback start
+        # Set the traceback start.
         i = len(seq_a)
         j = len(seq_b)
         if mode == "local":
@@ -141,7 +141,7 @@ def make_align(
             i = traceback_start[0]
             j = traceback_start[1]
 
-        # Traceback
+        # Traceback.
         seq_a_aln = []
         seq_b_aln = []
         warp_path_a = []
@@ -165,17 +165,17 @@ def make_align(
                 seq_b_aln.append(seq_b[j - 1])
                 j -= 1
 
-        # Reverse the sequences
+        # Reverse the sequences.
         seq_a_aln.reverse()
         seq_b_aln.reverse()
 
-        # Reverse the warping paths and let them start with 0
+        # Reverse the warping paths and let them start with 0.
         warp_path_a.reverse()
         warp_path_b.reverse()
         warp_path_a = [(i - 1) for i in warp_path_a]
         warp_path_b = [(j - 1) for j in warp_path_b]
 
-        # Remove the first row and column from the scoring matrix
+        # Remove the first row and column from the scoring matrix.
         scoring_mat = scoring_mat[:, 1:]
         scoring_mat = scoring_mat[1:, :]
 
