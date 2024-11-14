@@ -2,6 +2,7 @@
 
 import random
 from typing import Any, Callable, List, Tuple
+
 import numpy as np
 import numpy.typing as npt
 
@@ -10,8 +11,7 @@ import numpy.typing as npt
 def make_align(
     mode: str, match: int = 1, mismatch: int = -1, gap: int = -1
 ) -> Callable:
-    """
-    Make and set up the align function.
+    """Make and set up the align function.
 
     This function sets up a couple of free variables that are used by the
     `align()` function as well as some helper functions. This is implementing
@@ -35,8 +35,7 @@ def make_align(
         raise RuntimeError(f"Invalid mode: {mode}")
 
     def _init_scoring_mat(a_len: int, b_len: int) -> npt.NDArray[Any]:
-        """
-        Initialize the scoring matrix.
+        """Initialize the scoring matrix.
 
         The are two cases here:
         1. Global aligment: Given there is no 'top' or 'top-left' cells for the
@@ -64,8 +63,7 @@ def make_align(
         return scoring_mat
 
     def _init_ptr_mat(a_len: int, b_len: int) -> npt.NDArray[Any]:
-        """
-        Initialize the pointer matrix.
+        """Initialize the pointer matrix.
 
         Initialize a pointer matrix containing pointers to trace through an
         optimal alignment. The cells which give the highest candidate scores
@@ -87,8 +85,7 @@ def make_align(
     def align(
         seq_a: List[str], seq_b: List[str]
     ) -> Tuple[List[str], List[str], List[str], List[str], npt.NDArray[Any]]:
-        """
-        Perform local or global pairwise sequence alignment.
+        """Perform local or global pairwise sequence alignment.
 
         The Needleman-Wunsch algorithm finds the optimal global alignment
         (end-to-end) between two sequences. The Smith-Waterman algorithm finds
@@ -138,11 +135,9 @@ def make_align(
             if len(coords) > 1:
                 traceback_start = random.choice(seq=coords)
                 print(
-                    f"{align.__name__}: Multiple ({len(coords)}) possible traceback starts"
+                    f"Multiple possible traceback starts: {", ".join(map(str, coords))}"
                 )
-                print(
-                    f"{align.__name__}: Choosing traceback start by random: {traceback_start}"
-                )
+                print(f"Chose random traceback start from choices: {traceback_start}")
             i = traceback_start[0]
             j = traceback_start[1]
 
