@@ -1,14 +1,12 @@
 """This module defines an autoencoder model."""
 
+import pytorch_lightning as pl
 import torch
 from torch import nn
 
-import pytorch_lightning as pl
-
 
 class Encoder(nn.Module):
-    """
-    MLP encoder.
+    """MLP encoder.
 
     Args:
         in_features: The number of input features.
@@ -16,6 +14,7 @@ class Encoder(nn.Module):
     """
 
     def __init__(self, in_features: int, latent_dim: int) -> None:
+        """Initialize the encoder."""
         super().__init__()
         self.l1 = nn.Sequential(
             nn.Linear(in_features=in_features, out_features=64),
@@ -24,8 +23,7 @@ class Encoder(nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """
-        Forward pass of the encoder.
+        """Forward pass of the encoder.
 
         Args:
             x: The input tensor.
@@ -37,8 +35,7 @@ class Encoder(nn.Module):
 
 
 class Decoder(nn.Module):
-    """
-    MLP decoder.
+    """MLP decoder.
 
     Args:
         latent_dim: Dimension of the latent space.
@@ -46,6 +43,7 @@ class Decoder(nn.Module):
     """
 
     def __init__(self, latent_dim: int, out_features: int) -> None:
+        """Initialize the decoder."""
         super().__init__()
         self.l1 = nn.Sequential(
             nn.Linear(in_features=latent_dim, out_features=64),
@@ -54,8 +52,7 @@ class Decoder(nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """
-        Forward pass of the decoder.
+        """Forward pass of the decoder.
 
         Args:
             x: The input tensor.
@@ -67,8 +64,7 @@ class Decoder(nn.Module):
 
 
 class Autoencoder(pl.LightningModule):
-    """
-    Simple Autoencoder model.
+    """Simple Autoencoder model.
 
     Args:
         in_features: The number of input features.
@@ -76,6 +72,7 @@ class Autoencoder(pl.LightningModule):
     """
 
     def __init__(self, in_features: int, learning_rate: float = 1e-3) -> None:
+        """Initialize the autoencoder."""
         super().__init__()
         self.encoder = Encoder(in_features=in_features, latent_dim=64)
         self.decoder = Decoder(latent_dim=64, out_features=in_features)
@@ -83,8 +80,7 @@ class Autoencoder(pl.LightningModule):
         self.loss_fn = nn.MSELoss()
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """
-        Forward pass of the autoencoder.
+        """Forward pass of the autoencoder.
 
         Args:
             x: The input tensor.
@@ -100,7 +96,7 @@ class Autoencoder(pl.LightningModule):
         x_hat = self.decoder(z)
         loss = self.loss_fn(input=x_hat, target=x)
 
-        # Log batch index and training loss
+        # Log batch index and training loss.
         self.log(name="batch_idx", value=int(batch_idx), prog_bar=True)
         self.log(name="train_loss", value=loss, prog_bar=True)
 
@@ -112,7 +108,7 @@ class Autoencoder(pl.LightningModule):
         x_hat = self.decoder(z)
         loss = self.loss_fn(input=x_hat, target=x)
 
-        # Log test loss
+        # Log test loss.
         self.log(name="test_loss", value=loss, prog_bar=True)
 
     def configure_optimizers(self):  # noqa: D102

@@ -3,12 +3,11 @@
 import os
 import sys
 
-from anndata import AnnData
 import pandas as pd
 import scanpy as sc
-from typing import Optional
+from anndata import AnnData
 
-# Append the root of the Git repository to the path
+# Append the root of the Git repository to the path.
 git_root = os.popen(cmd="git rev-parse --show-toplevel").read().strip()
 sys.path.append(git_root)
 
@@ -16,8 +15,7 @@ from utils import download_file  # noqa: E402
 
 
 class PertData:
-    """
-    Class for perturbation data.
+    """Class for perturbation data.
 
     The perturbation data is stored in an `AnnData` object. Refer to
     https://anndata.readthedocs.io/en/latest/ for more information on `AnnData`.
@@ -38,23 +36,26 @@ class PertData:
 
     def __init__(self) -> None:
         """Initialize the PertData object."""
-        self.name: Optional[str] = None
-        self.path: Optional[str] = None
-        self.adata: Optional[AnnData] = None
+        self.name: str = ""
+        self.path: str = ""
+        self.adata: AnnData = AnnData()
 
     def __str__(self) -> str:
         """Return a string representation of the PertData object."""
+        adata_info = (
+            "AnnData object with n_obs x n_vars = "
+            f"{self.adata.shape[0]} x {self.adata.shape[1]}"
+        )
         return (
             f"PertData object\n"
             f"    name: {self.name}\n"
             f"    path: {self.path}\n"
-            f"    adata: AnnData object with n_obs x n_vars = {self.adata.shape[0]} x {self.adata.shape[1]}"
+            f"    adata: {adata_info}"
         )
 
     @classmethod
     def from_repo(cls, name: str, save_dir: str) -> "PertData":
-        """
-        Load perturbation dataset from an online repository.
+        """Load perturbation dataset from an online repository.
 
         Args:
             name: The name of the dataset to load (supported: "dixit", "adamson",
@@ -72,8 +73,7 @@ class PertData:
 
 
 def _load(dataset_name: str, dataset_dir: str) -> AnnData:
-    """
-    Load perturbation dataset.
+    """Load perturbation dataset.
 
     The following are the corresponding publications:
     - [Dixit et al., 2016](https://doi.org/10.1016/j.cell.2016.11.038)
@@ -127,19 +127,19 @@ def _load(dataset_name: str, dataset_dir: str) -> AnnData:
     else:
         raise ValueError(f"Unknown dataset: {dataset_name}")
 
-    # If the dataset directory does not exist, create it and download the dataset
+    # If the dataset directory does not exist, create it and download the dataset.
     if not os.path.exists(path=dataset_dir):
         # Create dataset directory
         print(f"Creating dataset directory: {dataset_dir}")
         os.makedirs(name=dataset_dir)
 
-        # Download the dataset
+        # Download the dataset.
         print(f"Downloading dataset: {dataset_name}")
         download_file(url=url, save_filename=dataset_filename)
     else:
         print(f"Dataset directory already exists: {dataset_dir}")
 
-    # Load the dataset
+    # Load the dataset.
     print(f"Loading dataset: {dataset_name}")
     adata = sc.read_h5ad(filename=dataset_filename)
 
@@ -147,8 +147,7 @@ def _load(dataset_name: str, dataset_dir: str) -> AnnData:
 
 
 def generate_fixed_perturbation_labels(labels: pd.Series) -> pd.Series:
-    """
-    Generate fixed perturbation labels.
+    """Generate fixed perturbation labels.
 
     In the perturbation datasets, single-gene perturbations are expressed as:
     - ctrl+<gene1>
@@ -177,7 +176,7 @@ def generate_fixed_perturbation_labels(labels: pd.Series) -> pd.Series:
     Returns:
         The fixed perturbation labels.
     """
-    # Remove "ctrl+" and "+ctrl" matches
+    # Remove "ctrl+" and "+ctrl" matches.
     labels_fixed = labels.str.replace(pat="ctrl+", repl="")
     labels_fixed = labels_fixed.str.replace(pat="+ctrl", repl="")
 
