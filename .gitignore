@@ -1,5 +1,5 @@
 __pycache__/
 /.ruff_cache/
-lightning_logs/
-outputs/
-optuna.db
+/lightning_logs/
+/outputs/
+/optuna.db
