@@ -16,7 +16,7 @@ In this course, all exercises are provided as [Jupyter](https://jupyter.org) not
 > The main part of a Jupyter notebook is a list of cells.
 > List of cells are different types of cells for [Markdown](https://en.wikipedia.org/wiki/Markdown), code, and output of the code type cells.
 
-The notebooks are organized in [demos](src/demos/) and [exercises](src/exercises/).
+The notebooks are organized in [demos](src/demos/), [exercises](src/exercises/), and [projects](src/projects/).
 In each exercises folder, you will find two versions of each notebook: one named, e.g., `hic_analysis.ipynb`, and another one named `hic_analysis_exercise.ipynb`.
 Please work in the exercise version.
 If you get stuck, feel free to take a look at the corresponding solution.
@@ -35,7 +35,7 @@ git clone https://github.com/voges/amlg.git
 > Please refer to the [Ubuntu documentation](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview) for installation instructions.
 > On Mac systems, we recommend installing Git using the Xcode command line tools (via `xcode-select --install`) or via [Homebrew](https://brew.sh).
 
-We recommend [Visual Studio Code with its Jupyter extensions](https://code.visualstudio.com/docs/datascience/jupyter-notebooks).
+We recommend using [Visual Studio Code](https://code.visualstudio.com) and the provided [development container](https://code.visualstudio.com/docs/devcontainers/containers).
 
 ### Online
 
@@ -57,7 +57,7 @@ We use [pip](https://pip.pypa.io) for package and environment management.
 
 Here are some useful commands:
 
-```sh
+```shell
 # Create a virtual environment.
 python3 -m venv .venv
 
