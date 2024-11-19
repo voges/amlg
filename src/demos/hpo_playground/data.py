@@ -46,9 +46,7 @@ def load_data() -> tuple[MNIST, MNIST]:
         train_set: The training set of the MNIST dataset.
         test_set: The test set of the MNIST dataset.
     """
-    data_path = os.path.join(
-        get_git_root(), "notebooks", "demos", "hpo_playground", "data"
-    )
+    data_path = os.path.join(get_git_root(), "src", "demos", "hpo_playground", "data")
     train_set = MNIST(
         root=data_path, train=True, download=True, transform=transforms.ToTensor()
     )

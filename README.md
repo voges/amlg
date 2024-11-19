@@ -16,11 +16,11 @@ In this course, all exercises are provided as [Jupyter](https://jupyter.org) not
 > The main part of a Jupyter notebook is a list of cells.
 > List of cells are different types of cells for [Markdown](https://en.wikipedia.org/wiki/Markdown), code, and output of the code type cells.
 
-The notebooks are organized in [demos](notebooks/demos/) and [exercises](notebooks/exercises/).
-In each exercise folder, you will find two versions of each notebook: one named, e.g., `hic_analysis.ipynb`, and another one named `hic_analysis_assignment.ipynb`.
-Please work in the assignment version.
+The notebooks are organized in [demos](src/demos/) and [exercises](src/exercises/).
+In each exercises folder, you will find two versions of each notebook: one named, e.g., `hic_analysis.ipynb`, and another one named `hic_analysis_exercise.ipynb`.
+Please work in the exercise version.
 If you get stuck, feel free to take a look at the corresponding solution.
-Note: The assignment versions will be uploaded according to the current status of the course.
+Note: The exercise versions will be uploaded according to the current status of the course.
 
 ### Locally
 
