@@ -81,8 +81,3 @@ deactivate
 
 We use [Ruff](https://github.com/astral-sh/ruff) to lint and format the code.
 We recommend using the [Ruff extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff).
-
-## License
-
-This project is licensed under the MIT License.
-See the [LICENSE](LICENSE) file for details.
