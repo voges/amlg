@@ -7,7 +7,9 @@
 				"GitHub.copilot",
 				"ms-python.python",
 				"charliermarsh.ruff",
-				"ms-toolsai.jupyter"
+				"ms-toolsai.jupyter",
+				"mutantdino.resourcemonitor",
+				"ms-toolsai.datawrangler"
 			]
 		}
 	},
