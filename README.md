@@ -50,34 +50,3 @@ The data used are available via the [Harvard Dataverse](https://dataverse.harvar
 A copy of the data is also hosted [here](https://seafile.cloud.uni-hannover.de/d/5d6029c6eaaf410c8b01/) via Seafile at Leibniz University Hannover.
 Note: It is not necessary to download the data beforehand.
 The individual notebooks already contain the code to download the necessary data.
-
-## Package and Environment Management
-
-We use [pip](https://pip.pypa.io) for package and environment management.
-
-Here are some useful commands:
-
-```shell
-# Create a virtual environment.
-python3 -m venv .venv
-
-# Activate a virtual environment.
-source .venv/bin/activate
-
-# Install packages from a requirements.txt file.
-pip3 install -r requirements.txt
-
-# Install a package.
-pip3 install <package>
-
-# Update a requirements file.
-pip3 freeze > requirements.txt
-
-# Deactivate a virtual environment.
-deactivate
-```
-
-## Linting & Formatting
-
-We use [Ruff](https://github.com/astral-sh/ruff) to lint and format the code.
-We recommend using the [Ruff extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff).
