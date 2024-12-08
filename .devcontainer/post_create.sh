@@ -4,4 +4,4 @@
 sed --in-place '/"\[python\]": {/,/}/d' /home/vscode/.vscode-server/data/Machine/settings.json
 
 # Install the Python dependencies.
-pip3 --disable-pip-version-check install --requirement requirements.txt
+pip --disable-pip-version-check install --requirement requirements.txt
