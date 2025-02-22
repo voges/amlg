@@ -13,7 +13,7 @@
 			]
 		}
 	},
-	"runArgs": ["--name", "amlg"],
+	"runArgs": ["--name", "amlg_devcontainer"],
 	"postCreateCommand": "bash .devcontainer/post_create.sh",
 	"remoteUser": "vscode"
 }
