@@ -1,6 +1,6 @@
 {
     "editor.rulers": [
-        120
+        88
     ],
     "notebook.codeActionsOnSave": {
         "notebook.source.fixAll": "explicit",
