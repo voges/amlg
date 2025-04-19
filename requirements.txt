@@ -149,7 +149,7 @@ terminado==0.18.1
 threadpoolctl==3.5.0
 tinycss2==1.4.0
 toolz==1.0.0
-torch==2.5.1
+torch==2.6.0
 torchaudio==2.5.1
 torchmetrics==1.6.0
 torchvision==0.20.1
