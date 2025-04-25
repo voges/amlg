@@ -1,0 +1,8 @@
+# PyTorch packages to be installed from the PyTorch package index. Note the we are using
+# the CPU-only version for the devcontainer.
+
+--index-url https://download.pytorch.org/whl/cpu
+
+torch==2.7.0+cpu
+torchaudio==2.7.0
+torchvision==0.22.0
