@@ -5,6 +5,7 @@ This repository contains the code for the course **Applied Machine Learning in G
 This course was held at:
 - Winter Semester 2023/24, [Leibniz University Hannover](https://www.uni-hannover.de)
 - Winter Semester 2024/25, [Leibniz University Hannover](https://www.uni-hannover.de)
+- Winter Semester 2025/26, [Leibniz University Hannover](https://www.uni-hannover.de)
 
 Happy coding! 👩‍💻👨‍💻
 
