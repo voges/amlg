@@ -1,3 +1,4 @@
+.ipynb_checkpoints
 __pycache__/
 /.ruff_cache/
 /lightning_logs/
