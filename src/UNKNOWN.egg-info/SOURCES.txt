@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+src/UNKNOWN.egg-info/PKG-INFO
+src/UNKNOWN.egg-info/SOURCES.txt
+src/UNKNOWN.egg-info/dependency_links.txt
+src/UNKNOWN.egg-info/top_level.txt
+src/demos/hpo_playground/data.py
+src/demos/hpo_playground/main.py
+src/demos/hpo_playground/models.py
+src/demos/scrna_vae_demo/vae.py
+src/exercises/pairwise_sequence_alignment/alignment.py
+src/exercises/perturbation_data_analysis/autoencoder.py
